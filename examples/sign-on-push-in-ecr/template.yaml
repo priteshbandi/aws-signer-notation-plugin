@@ -1,0 +1,58 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  sign-on-push-in-ecr
+  Sign ECR image using EventBridge and notation
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 20
+
+Resources:
+  SignImageLambda:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x
+    Properties:
+      CodeUri: SignImageLambda
+      Handler: bootstrap
+      Runtime: provided.al2
+      Architectures:
+        - x86_64
+      Environment:
+        Variables:
+          AWS_SIGNER_PROFILE_ARN: "arn:aws:signer:us-west-2:951584113157:/signing-profiles/ECR"
+          AWS_TRUSTED_IAM_ROLE_ARN: "arn:aws:iam::951584113157:user/pritesb-mac-cli-admin"
+          XDG_CONFIG_HOME: "/dummy"
+      Policies:
+        - Statement:
+            - Effect: Allow
+              Action:
+                - signer:SignPayload
+                - ecr:*
+              Resource: "*"
+      Events:
+        SignECRImage:
+          Type: EventBridgeRule
+          Properties:
+            Pattern:
+              source:
+                - aws.ecr
+              detail-type:
+                - AWS API Call via CloudTrail
+              detail:
+                eventSource:
+                  - ecr.amazonaws.com
+                eventName:
+                  - PutImage
+
+Outputs:
+  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
+  # Find out more about other implicit resources you can reference within SAM
+  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
+  SignImageLambda:
+    Description: "SignImageLambda Function ARN"
+    Value: !GetAtt SignImageLambda.Arn
+  SignImageLambdaIamRole:
+    Description: "Implicit IAM Role created for SignImageLambda function"
+    Value: !GetAtt SignImageLambda.Arn

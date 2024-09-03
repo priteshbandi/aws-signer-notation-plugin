@@ -1,0 +1,68 @@
+{
+  "version": "0",
+  "id": "76ee3ddd-f6b7-a76a-db43-3770d5071aac",
+  "detail-type": "AWS API Call via CloudTrail",
+  "source": "aws.ecr",
+  "account": "951584113157",
+  "time": "2024-09-03T19:43:01Z",
+  "region": "us-west-2",
+  "resources": [],
+  "detail": {
+    "eventVersion": "1.08",
+    "userIdentity": {
+      "type": "IAMUser",
+      "principalId": "AIDA53DWVIICRUYMVNO3X",
+      "arn": "arn:aws:iam::951584113157:user/pritesb-mac-cli-admin",
+      "accountId": "951584113157",
+      "accessKeyId": "ASIA53DWVIICZYORZCCX",
+      "userName": "pritesb-mac-cli-admin",
+      "sessionContext": {
+        "sessionIssuer": {},
+        "webIdFederationData": {},
+        "attributes": {
+          "creationDate": "2024-09-03T19:03:32Z",
+          "mfaAuthenticated": "false"
+        }
+      },
+      "invokedBy": "ecr.amazonaws.com"
+    },
+    "eventTime": "2024-09-03T19:43:01Z",
+    "eventSource": "ecr.amazonaws.com",
+    "eventName": "PutImage",
+    "awsRegion": "us-west-2",
+    "sourceIPAddress": "ecr.amazonaws.com",
+    "userAgent": "ecr.amazonaws.com",
+    "requestParameters": {
+      "registryId": "951584113157",
+      "repositoryName": "hello-repository",
+      "imageManifest": "{\n   \"schemaVersion\": 2,\n   \"mediaType\": \"application/vnd.docker.distribution.manifest.v2+json\",\n   \"config\": {\n      \"mediaType\": \"application/vnd.docker.container.image.v1+json\",\n      \"size\": 2000,\n      \"digest\": \"sha256:e484748972db6007df7166322367706cfe567e0f8f8f1a9c944c3f61e6246977\"\n   },\n   \"layers\": [\n      {\n         \"mediaType\": \"application/vnd.docker.image.rootfs.diff.tar.gzip\",\n         \"size\": 51457152,\n         \"digest\": \"sha256:154360ae54dfa1d6974917dc29086d4d678d1f640f9c2fe7a2152a2b7a62c6c1\"\n      },\n      {\n         \"mediaType\": \"application/vnd.docker.image.rootfs.diff.tar.gzip\",\n         \"size\": 21465164,\n         \"digest\": \"sha256:815d475dbf7bdc027977547e3469ff52d9279504f81a74cead68422f6ae98a5d\"\n      },\n      {\n         \"mediaType\": \"application/vnd.docker.image.rootfs.diff.tar.gzip\",\n         \"size\": 40884793,\n         \"digest\": \"sha256:7721512f647602c6c94d36fcb8e7082d0f12d834edf72b8f4aab4c0053d182aa\"\n      }\n   ]\n}",
+      "imageManifestMediaType": "application/vnd.docker.distribution.manifest.v2+json",
+      "imageTag": "latest"
+    },
+    "responseElements": {
+      "image": {
+        "registryId": "951584113157",
+        "repositoryName": "hello-repository",
+        "imageId": {
+          "imageDigest": "sha256:d569a96ca408912360c6d4ae4e204c065ca01d68a3d03ad629c8e3979d2f1c70",
+          "imageTag": "latest"
+        },
+        "imageManifest": "{\n   \"schemaVersion\": 2,\n   \"mediaType\": \"application/vnd.docker.distribution.manifest.v2+json\",\n   \"config\": {\n      \"mediaType\": \"application/vnd.docker.container.image.v1+json\",\n      \"size\": 2000,\n      \"digest\": \"sha256:e484748972db6007df7166322367706cfe567e0f8f8f1a9c944c3f61e6246977\"\n   },\n   \"layers\": [\n      {\n         \"mediaType\": \"application/vnd.docker.image.rootfs.diff.tar.gzip\",\n         \"size\": 51457152,\n         \"digest\": \"sha256:154360ae54dfa1d6974917dc29086d4d678d1f640f9c2fe7a2152a2b7a62c6c1\"\n      },\n      {\n         \"mediaType\": \"application/vnd.docker.image.rootfs.diff.tar.gzip\",\n         \"size\": 21465164,\n         \"digest\": \"sha256:815d475dbf7bdc027977547e3469ff52d9279504f81a74cead68422f6ae98a5d\"\n      },\n      {\n         \"mediaType\": \"application/vnd.docker.image.rootfs.diff.tar.gzip\",\n         \"size\": 40884793,\n         \"digest\": \"sha256:7721512f647602c6c94d36fcb8e7082d0f12d834edf72b8f4aab4c0053d182aa\"\n      }\n   ]\n}",
+        "imageManifestMediaType": "application/vnd.docker.distribution.manifest.v2+json"
+      }
+    },
+    "requestID": "5378bdb9-908f-4a70-b724-95f867f139fd",
+    "eventID": "49884d5a-62cb-49f1-b1b6-f4a7846a8bc2",
+    "readOnly": false,
+    "resources": [
+      {
+        "accountId": "951584113157",
+        "ARN": "arn:aws:ecr:us-west-2:951584113157:repository/hello-repository"
+      }
+    ],
+    "eventType": "AwsApiCall",
+    "managementEvent": true,
+    "recipientAccountId": "951584113157",
+    "eventCategory": "Management"
+  }
+}
