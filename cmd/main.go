@@ -17,6 +17,7 @@ import (
 	"context"
 	"fmt"
 	"os"
+	"time"
 
 	"github.com/aws/aws-signer-notation-plugin/internal/logger"
 	"github.com/aws/aws-signer-notation-plugin/plugin"
@@ -28,7 +29,9 @@ const debugFlag = "AWS_SIGNER_NOTATION_PLUGIN_DEBUG"
 
 func main() {
 	awsPlugin := plugin.NewAWSSignerForCLI()
-	ctx := context.Background()
+	// plugin should finish execution in 10 seconds
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
 
 	var pluginCli *cli.CLI
 	var err error
